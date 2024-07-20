@@ -1,4 +1,4 @@
-package tw.lazycat.line_message_keep;
+package tw.lazycat.line_message_keep.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
