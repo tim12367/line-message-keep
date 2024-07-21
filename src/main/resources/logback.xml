@@ -7,7 +7,7 @@
 	<!-- import spring 預設log樣式 -->
 	<include
 		resource="org/springframework/boot/logging/logback/defaults.xml" />
-		
+
 	<!-- console log設定 -->
 	<appender name="CONSOLE"
 		class="ch.qos.logback.core.ConsoleAppender">
@@ -69,12 +69,14 @@
 		<appender-ref ref="RollingConsoleLogFile" />
 		<appender-ref ref="CONSOLE" />
 	</root>
-	
+
 	<!-- 開發用 -->
-	<logger level="debug" name="tw.lazycat.line_message_keep">
+	<!-- additivity="false" 防止重複印info log -->
+	<logger level="debug" name="tw.lazycat.line_message_keep"
+		additivity="false">
 		<appender-ref ref="CONSOLE" />
 	</logger>
-	
+
 	<!-- LOG request -->
 	<logger
 		name="org.springframework.web.filter.CommonsRequestLoggingFilter"
