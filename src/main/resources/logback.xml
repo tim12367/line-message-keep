@@ -4,9 +4,11 @@
 	<property name="LOGGING_REQUEST_PATH" value="./log/request" />
 	<property name="LOGGING_CONSOLE_PATH" value="./log/console" />
 
-	<!-- console log設定 -->
+	<!-- import spring 預設log樣式 -->
 	<include
 		resource="org/springframework/boot/logging/logback/defaults.xml" />
+		
+	<!-- console log設定 -->
 	<appender name="CONSOLE"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -15,7 +17,7 @@
 		</encoder>
 	</appender>
 
-	<!-- log request設定 -->
+	<!--request log設定 -->
 	<appender name="RollingRequestLogFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 'LOGS' here is a value to be read from the application's environment 
@@ -67,8 +69,13 @@
 		<appender-ref ref="RollingConsoleLogFile" />
 		<appender-ref ref="CONSOLE" />
 	</root>
-	<!-- LOG "org.springframework.web.filter.CommonsRequestLoggingFilter" at 
-		the DEBUG level -->
+	
+	<!-- 開發用 -->
+	<logger level="debug" name="tw.lazycat.line_message_keep">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	
+	<!-- LOG request -->
 	<logger
 		name="org.springframework.web.filter.CommonsRequestLoggingFilter"
 		level="debug" additivity="false">
