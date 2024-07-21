@@ -1,10 +1,10 @@
-spring:
-  application:
+spring:  
+  application:  
     name:   line-message-keep
-server:
+
+server:  
   port:   5050
-logging.level:
-  tw.lazycat.line_message_keep:   DEBUG
+
 spring.jackson:
   time-zone:   Asia/Taipei
 
