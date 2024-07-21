@@ -82,7 +82,7 @@
 		name="org.springframework.web.filter.CommonsRequestLoggingFilter"
 		level="debug" additivity="false">
 		<appender-ref ref="RollingRequestLogFile" />
-		<!-- <appender-ref ref="Console" /> -->
+		<appender-ref ref="CONSOLE" />
 	</logger>
 
 </configuration>
