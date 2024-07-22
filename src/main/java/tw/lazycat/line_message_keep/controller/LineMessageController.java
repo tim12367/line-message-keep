@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 import tw.lazycat.line_message_keep.dto.RequestDto;
+import tw.lazycat.line_message_keep.service.KeepMessageService;
 
 @RestController
 @Slf4j
@@ -17,8 +18,12 @@ public class LineMessageController {
 	@Autowired
 	private ObjectMapper objectMapper;
 
+	@Autowired
+	private KeepMessageService keepMessageService;
+
 	@PostMapping("/linebot")
 	public void linebot(@RequestBody RequestDto req) throws JsonProcessingException {
-		log.debug(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(req));
+		log.debug("\n" + objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(req));
+		keepMessageService.save(req);
 	}
 }
